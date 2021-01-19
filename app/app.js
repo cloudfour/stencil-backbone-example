@@ -13,10 +13,13 @@ var TodoList = Backbone.Collection.extend({
 
 var TodoView = Backbone.View.extend({
   tagName: "div",
-  //   render: function () {
-  //     // this.el.innerHTML = this.template(this.model.toJSON());
-  //     return this;
-  //   },
+  render: function () {
+    this.el.innerHTML = this.template(this.model.toJSON());
+    return this;
+  },
+  template: ({done, title}) => `
+    <my-component checked="${done}">${title}</my-component>
+  `
 });
 
 var todos = new TodoList([
@@ -25,10 +28,14 @@ var todos = new TodoList([
   { title: "Example 3" },
 ]);
 
-var todoViews = todos.map((model) => {
-  const view = new TodoView({ model });
-  console.log(view);
-  return view;
-});
+const AppView = Backbone.View.extend({
+  el: $('#app'),
+  initialize: function () {
+    todos.each(function (todo) {
+      var view = new TodoView({model: todo});
+      this.el.append(view.render().el);
+    }, this);
+  }
+})
 
-// (╯°□°）╯︵ ┻━┻
+new AppView()
