@@ -1,0 +1,12 @@
+{
+  "name": "stencil-backbone-example-app",
+  "private": true,
+  "version": "1.0.0",
+  "dependencies": {
+    "backbone": "^1.4.0",
+    "stencil-backbone-example-components": "file:../components"
+  },
+  "scripts": {
+    "start": "npx http-server ."
+  }
+}
