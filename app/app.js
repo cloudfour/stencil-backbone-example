@@ -12,7 +12,7 @@ var TodoList = Backbone.Collection.extend({
 });
 
 var TodoView = Backbone.View.extend({
-  tagName: "li",
+  tagName: "p",
   render: function () {
     this.el.innerHTML = this.template(this.model.toJSON());
     return this;
