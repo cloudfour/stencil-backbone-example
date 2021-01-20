@@ -12,6 +12,10 @@ export class MyComponent {
   @Prop() checked: boolean;
 
   render() {
-    return <label><input type="checkbox" checked={this.checked}/><slot /></label>;
+    return <label>
+      <input type="checkbox" checked={this.checked} />
+      <div class="toggle"></div>
+      <slot />
+    </label>;
   }
 }

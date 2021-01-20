@@ -1,3 +1,47 @@
 :host {
   display: block;
 }
+
+label {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  position: relative;
+}
+
+input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.toggle {
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid transparent;
+  border-radius: 99em;
+  height: 1.5em;
+  margin-right: 1ch;
+  position: relative;
+  width: 3em;
+}
+
+input:checked ~ .toggle {
+  background: rgb(21, 132, 102);
+}
+
+.toggle::before {
+  content: '';
+  height: 1.5em;
+  width: 1.5em;
+  background: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: inherit;
+  transition: transform 0.2s ease;
+}
+
+input:checked ~ .toggle::before {
+  transform: translateX(100%);
+}

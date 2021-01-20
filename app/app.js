@@ -12,14 +12,14 @@ var TodoList = Backbone.Collection.extend({
 });
 
 var TodoView = Backbone.View.extend({
-  tagName: "div",
+  tagName: "li",
   render: function () {
     this.el.innerHTML = this.template(this.model.toJSON());
     return this;
   },
-  template: ({done, title}) => `
+  template: ({ done, title }) => `
     <my-component checked="${done}">${title}</my-component>
-  `
+  `,
 });
 
 var todos = new TodoList([
@@ -29,13 +29,13 @@ var todos = new TodoList([
 ]);
 
 const AppView = Backbone.View.extend({
-  el: $('#app'),
+  el: $("#app"),
   initialize: function () {
     todos.each(function (todo) {
-      var view = new TodoView({model: todo});
+      var view = new TodoView({ model: todo });
       this.el.append(view.render().el);
     }, this);
-  }
-})
+  },
+});
 
-new AppView()
+new AppView();
